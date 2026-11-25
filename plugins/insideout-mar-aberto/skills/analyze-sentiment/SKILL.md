@@ -1,0 +1,105 @@
+---
+name: analyze-sentiment
+description: Analisa automaticamente relevância, alvo, sentimento, temas e amplificação de menções, comentários e respostas do Mar Aberto. Use quando a pessoa quiser processar o corpus completo, retomar a análise ou revisar seus agregados.
+---
+
+# Analisar sentimento e temas
+
+Transforme o corpus temporário em dados analíticos anonimizados e agregações
+auditáveis. A classificação é integralmente automática; revisão humana pertence
+à construção do relatório.
+
+## Preparar
+
+1. Leia `../../references/_shared/analysis-rubric.md`,
+   `../../references/_shared/privacy-retention.md` e
+   `../../references/_shared/local-state.md`.
+2. Valide o manifesto, `working/mentions.jsonl`, `working/comments.jsonl` e a
+   cobertura produzida por `collect-comments`.
+3. Exija um checkpoint para cada publicação obrigatória e reconcilie os dois
+   diagnósticos de cobertura. Inicie a análise automaticamente sobre os itens
+   observados, mesmo se houver estado `partial` ou `unavailable`. Preserve essas
+   lacunas e `coverage_mode: observed_with_gaps` nos derivados. Diferença
+   exclusiva com a Stilingue não é lacuna de coleta.
+4. Leia `../../references/_shared/schemas/analysis-record.schema.json` e
+   `../../references/_shared/schemas/evidence-record.schema.json`.
+5. Preserve no checkpoint a versão da rubrica e a identidade do modelo ativo
+   quando essa informação estiver disponível.
+
+## Classificar
+
+Para cada menção, comentário ou resposta:
+
+- decida a relevância para Hyundai i20 no mercado brasileiro;
+- registre motivo breve para exclusão;
+- atribua um ou mais alvos e registre sentimento e confiança para cada alvo,
+  sem transferir polaridade entre eles;
+- classifique também o sentimento-resumo do registro como positivo, negativo,
+  neutro, misto ou ambíguo para a distribuição principal;
+- atribua temas normalizados e multirrótulo;
+- registre confiança entre 0 e 1;
+- preserve curtidas e respostas disponíveis como sinais, não como peso da
+  distribuição principal.
+
+Não peça revisão item a item. Casos incertos permanecem ambíguos em vez de
+serem forçados para uma classe conclusiva.
+
+## Agregar
+
+Reconcilie todos os registros observados entre relevantes, excluídos e falhas.
+Calcule sempre com `source_kind` explícito:
+
+- distribuições de sentimento separadas para menções, comentários e respostas;
+- alvos e temas, sem duplicar o denominador de sentimento;
+- séries diárias por rede e tipo de fonte;
+- amplificação separada por rede e tipo de fonte a partir dos sinais disponíveis;
+- cobertura e limitações que condicionam cada leitura.
+
+Cada agregado e percentual usa como denominador os registros relevantes
+observados do mesmo canal e tipo. Quando houver lacuna de coleta, preserve sua
+localização para a revisão editorial, sem transformar todos os achados em uma
+advertência geral. Não apresente o corpus como distribuição de todos os
+comentários possíveis. Diferença apenas da Stilingue fica na auditoria, sem
+trocar o denominador pelo total da exportação.
+
+Não combine menções e comentários no mesmo denominador nem produza índice único
+de engajamento entre plataformas.
+
+## Selecionar evidências
+
+Proponha um pool de trechos integrais anonimizados, estratificado por rede, tipo
+de fonte, tema e sentimento. Inclua manifestações recorrentes, marcantes e
+contrapontos. Engajamento pode informar a seleção, mas não dominá-la. Marque
+todas como `approved: false` até o primeiro gate editorial.
+
+## Persistir e descartar
+
+Grave e valide `analysis/records.jsonl`, `analysis/aggregates.json` e
+`analysis/evidence-candidates.jsonl`. Compare suas contagens com o corpus e a
+cobertura. Somente depois de todos os artefatos e hashes serem válidos:
+
+1. atualize o checkpoint de análise;
+2. remova `working/comments.jsonl` e `working/mentions.jsonl`;
+3. releia a pasta para provar que os corpora temporários não permaneceram.
+
+Se a etapa for interrompida antes do checkpoint, preserve o corpus e retome
+somente os registros ainda não concluídos.
+
+## Encadear o relatório
+
+Depois de validar o checkpoint de análise, encadeie `generate-report` na mesma
+execução, sem exigir um novo pedido da pessoa. A chamada deve consumir somente
+os derivados já validados, a cobertura e o pool de evidências candidatas.
+
+Esse encadeamento abre o Gate 1 editorial: apresente as conclusões, a estrutura
+e as evidências para decisão humana. Não aprove o gate, não gere apresentação
+ou planilha e não altere classificações automaticamente.
+
+## Limites
+
+- Não revisar classificações com uma segunda passagem automática.
+- Não analisar enquanto faltar checkpoint de publicação obrigatória ou enquanto
+  o diagnóstico legível não reconciliar com o estruturado.
+- Não mudar a rubrica silenciosamente durante uma execução.
+- Não construir a narrativa ou aprovar evidências.
+- Não descartar o corpus antes da validação completa dos derivados.

@@ -1,0 +1,22 @@
+{
+  "name": "insideout-social",
+  "version": "0.6.2",
+  "description": "Skills da InsideOut para briefing, padrões de marca, planejamento multirrede e produção de social media.",
+  "author": {
+    "name": "InsideOut"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "InsideOut Estée Lauder Social",
+    "shortDescription": "Planeje e revise social media multirrede.",
+    "longDescription": "Transforma briefings em análise, padrões históricos, trends sociais, grid editorial completo, copy, snapshots privados, revisões de cliente com feedback exportável, imagens e vídeos, com Airtable como estado operacional.",
+    "developerName": "InsideOut",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "defaultPrompt": [
+      "Analise este briefing da marca e destaque lacunas e escopo.",
+      "Monte o primeiro take completo e multirrede deste mês e gere um snapshot para revisão.",
+      "Valide o arquivo de feedback exportado pelo cliente e proponha os ajustes por post."
+    ]
+  }
+}

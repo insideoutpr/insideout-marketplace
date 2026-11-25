@@ -1,0 +1,17 @@
+.DS_Store
+Thumbs.db
+
+# Artefatos locais de demonstração e verificação não pertencem ao plugin.
+artifacts/
+.playwright-mcp/
+page-*.jpeg
+page-*.png
+mar-aberto/
+
+# Estado local de ferramentas não pertence ao plugin.
+.claude/
+
+# Arquivos transitórios gerados por ferramentas locais.
+**/__pycache__/
+*.pyc
+*.pyo

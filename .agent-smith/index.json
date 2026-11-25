@@ -1,0 +1,381 @@
+{
+  "schemaVersion": "2.0",
+  "topology": "marketplace",
+  "targets": [
+    "codex"
+  ],
+  "canonicalPaths": {
+    "index": ".agent-smith/index.json",
+    "skills": "plugins"
+  },
+  "lastUpdated": "2026-10-22T00:00:00Z",
+  "components": [
+    {
+      "id": "mcp:insideout-hyundai-social:airtable",
+      "type": "mcp",
+      "name": "airtable",
+      "plugin": "insideout-hyundai-social",
+      "canonicalPath": "plugins/insideout-hyundai-social/.app.json",
+      "description": "Mapeamento obrigatório para o conector oficial Airtable, autorizado individualmente na instalação."
+    },
+    {
+      "id": "skill:insideout-hyundai-social:research-month",
+      "type": "skill",
+      "name": "research-month",
+      "plugin": "insideout-hyundai-social",
+      "canonicalPath": "plugins/insideout-hyundai-social/skills/research-month/SKILL.md",
+      "description": "Pesquisa o mês Hyundai sem briefing obrigatório, com fontes e corte histórico."
+    },
+    {
+      "id": "skill:insideout-hyundai-social:generate-grid",
+      "type": "skill",
+      "name": "generate-grid",
+      "plugin": "insideout-hyundai-social",
+      "canonicalPath": "plugins/insideout-hyundai-social/skills/generate-grid/SKILL.md",
+      "description": "Compõe ideias e publicações Hyundai e revisão HTML de referências antes da produção."
+    },
+    {
+      "id": "skill:insideout-hyundai-social:review-grid-feedback",
+      "type": "skill",
+      "name": "review-grid-feedback",
+      "plugin": "insideout-hyundai-social",
+      "canonicalPath": "plugins/insideout-hyundai-social/skills/review-grid-feedback/SKILL.md",
+      "description": "Concilia feedback Hyundai sem aprovar ou aplicar mudanças automaticamente."
+    },
+    {
+      "id": "skill:insideout-hyundai-social:send-to-asana",
+      "type": "skill",
+      "name": "send-to-asana",
+      "plugin": "insideout-hyundai-social",
+      "canonicalPath": "plugins/insideout-hyundai-social/skills/send-to-asana/SKILL.md",
+      "description": "Encaminha ideias Hyundai confirmadas ao Asana com retomada e deduplicação."
+    },
+    {
+      "id": "skill:insideout-social:analyze-briefing",
+      "type": "skill",
+      "name": "analyze-briefing",
+      "plugin": "insideout-social",
+      "canonicalPath": "plugins/insideout-social/skills/analyze-briefing/SKILL.md",
+      "description": "Analisa briefings, escopo, lacunas e canais da InsideOut."
+    },
+    {
+      "id": "skill:insideout-social:generate-grid",
+      "type": "skill",
+      "name": "generate-grid",
+      "plugin": "insideout-social",
+      "canonicalPath": "plugins/insideout-social/skills/generate-grid/SKILL.md",
+      "description": "Compõe grids multirrede, pesquisa trends atuais e gera revisões privadas ou planejamentos de cliente."
+    },
+    {
+      "id": "skill:insideout-social:curate-brand-pattern",
+      "type": "skill",
+      "name": "curate-brand-pattern",
+      "plugin": "insideout-social",
+      "canonicalPath": "plugins/insideout-social/skills/curate-brand-pattern/SKILL.md",
+      "description": "Cura padrões históricos de marca a partir de perfis e posts finais aprovados."
+    },
+    {
+      "id": "skill:insideout-social:generate-copy",
+      "type": "skill",
+      "name": "generate-copy",
+      "plugin": "insideout-social",
+      "canonicalPath": "plugins/insideout-social/skills/generate-copy/SKILL.md",
+      "description": "Cria e revisa copy adaptada à rede e ao formato."
+    },
+    {
+      "id": "skill:insideout-social:generate-image",
+      "type": "skill",
+      "name": "generate-image",
+      "plugin": "insideout-social",
+      "canonicalPath": "plugins/insideout-social/skills/generate-image/SKILL.md",
+      "description": "Gera e registra mockups de posts com trilha de auditoria."
+    },
+    {
+      "id": "skill:insideout-social:generate-video",
+      "type": "skill",
+      "name": "generate-video",
+      "plugin": "insideout-social",
+      "canonicalPath": "plugins/insideout-social/skills/generate-video/SKILL.md",
+      "description": "Gera e registra vídeos curtos de posts."
+    },
+    {
+      "id": "skill:insideout-social:review-grid-feedback",
+      "type": "skill",
+      "name": "review-grid-feedback",
+      "plugin": "insideout-social",
+      "canonicalPath": "plugins/insideout-social/skills/review-grid-feedback/SKILL.md",
+      "description": "Valida feedback exportado de clientes e encaminha ajustes por post."
+    },
+    {
+      "id": "skill:insideout-mar-aberto:run-mar-aberto",
+      "type": "skill",
+      "name": "run-mar-aberto",
+      "plugin": "insideout-mar-aberto",
+      "canonicalPath": "plugins/insideout-mar-aberto/skills/run-mar-aberto/SKILL.md",
+      "description": "Conduz ou retoma o fluxo completo de análise de mar aberto."
+    },
+    {
+      "id": "skill:insideout-mar-aberto:export-stilingue",
+      "type": "skill",
+      "name": "export-stilingue",
+      "plugin": "insideout-mar-aberto",
+      "canonicalPath": "plugins/insideout-mar-aberto/skills/export-stilingue/SKILL.md",
+      "description": "Valida a exportação oficial da Stilingue, manual por padrão."
+    },
+    {
+      "id": "skill:insideout-mar-aberto:collect-comments",
+      "type": "skill",
+      "name": "collect-comments",
+      "plugin": "insideout-mar-aberto",
+      "canonicalPath": "plugins/insideout-mar-aberto/skills/collect-comments/SKILL.md",
+      "description": "Coleta comentários observáveis e produz diagnóstico de cobertura legível."
+    },
+    {
+      "id": "skill:insideout-mar-aberto:analyze-sentiment",
+      "type": "skill",
+      "name": "analyze-sentiment",
+      "plugin": "insideout-mar-aberto",
+      "canonicalPath": "plugins/insideout-mar-aberto/skills/analyze-sentiment/SKILL.md",
+      "description": "Analisa menções, comentários e respostas com cobertura completa."
+    },
+    {
+      "id": "skill:insideout-mar-aberto:generate-report",
+      "type": "skill",
+      "name": "generate-report",
+      "plugin": "insideout-mar-aberto",
+      "canonicalPath": "plugins/insideout-mar-aberto/skills/generate-report/SKILL.md",
+      "description": "Produz HTML e planilha, com lacunas explicadas onde afetam conclusões."
+    },
+    {
+      "id": "skill:insideout-governance:registrar-friccao",
+      "type": "skill",
+      "name": "registrar-friccao",
+      "plugin": "insideout-governance",
+      "canonicalPath": "plugins/insideout-governance/skills/registrar-friccao/SKILL.md",
+      "description": "Registra fricções sanitizadas dos plugins InsideOut na aba Fricções e fixes do Acervo de Governança."
+    },
+    {
+      "id": "skill:insideout-governance:governanca",
+      "type": "skill",
+      "name": "governanca",
+      "plugin": "insideout-governance",
+      "canonicalPath": "plugins/insideout-governance/skills/governanca/SKILL.md",
+      "description": "Lê a aba Fricções e fixes, prioriza por impacto e recorrência e sugere fixes verificáveis."
+    },
+    {
+      "id": "skill:insideout-mailing:gerir-contatos",
+      "type": "skill",
+      "name": "gerir-contatos",
+      "plugin": "insideout-mailing",
+      "canonicalPath": "plugins/insideout-mailing/skills/gerir-contatos/SKILL.md"
+    },
+    {
+      "id": "skill:insideout-mailing:montar-listas",
+      "type": "skill",
+      "name": "montar-listas",
+      "plugin": "insideout-mailing",
+      "canonicalPath": "plugins/insideout-mailing/skills/montar-listas/SKILL.md"
+    },
+    {
+      "id": "skill:insideout-mailing:gerir-historico",
+      "type": "skill",
+      "name": "gerir-historico",
+      "plugin": "insideout-mailing",
+      "canonicalPath": "plugins/insideout-mailing/skills/gerir-historico/SKILL.md"
+    }
+  ],
+  "adapters": [
+    {
+      "componentId": "mcp:insideout-hyundai-social:airtable",
+      "harness": "codex",
+      "status": "native",
+      "path": "plugins/insideout-hyundai-social/.app.json"
+    },
+    {
+      "componentId": "skill:insideout-hyundai-social:research-month",
+      "harness": "codex",
+      "status": "shared",
+      "path": "plugins/insideout-hyundai-social/skills/research-month/SKILL.md",
+      "sourcePath": "plugins/insideout-hyundai-social/skills/research-month"
+    },
+    {
+      "componentId": "skill:insideout-hyundai-social:generate-grid",
+      "harness": "codex",
+      "status": "shared",
+      "path": "plugins/insideout-hyundai-social/skills/generate-grid/SKILL.md",
+      "sourcePath": "plugins/insideout-hyundai-social/skills/generate-grid"
+    },
+    {
+      "componentId": "skill:insideout-hyundai-social:review-grid-feedback",
+      "harness": "codex",
+      "status": "shared",
+      "path": "plugins/insideout-hyundai-social/skills/review-grid-feedback/SKILL.md",
+      "sourcePath": "plugins/insideout-hyundai-social/skills/review-grid-feedback"
+    },
+    {
+      "componentId": "skill:insideout-hyundai-social:send-to-asana",
+      "harness": "codex",
+      "status": "shared",
+      "path": "plugins/insideout-hyundai-social/skills/send-to-asana/SKILL.md",
+      "sourcePath": "plugins/insideout-hyundai-social/skills/send-to-asana"
+    },
+    {
+      "componentId": "skill:insideout-social:analyze-briefing",
+      "harness": "codex",
+      "status": "shared",
+      "path": "plugins/insideout-social/skills/analyze-briefing/SKILL.md",
+      "sourcePath": "plugins/insideout-social/skills/analyze-briefing"
+    },
+    {
+      "componentId": "skill:insideout-social:generate-grid",
+      "harness": "codex",
+      "status": "shared",
+      "path": "plugins/insideout-social/skills/generate-grid/SKILL.md",
+      "sourcePath": "plugins/insideout-social/skills/generate-grid"
+    },
+    {
+      "componentId": "skill:insideout-social:curate-brand-pattern",
+      "harness": "codex",
+      "status": "shared",
+      "path": "plugins/insideout-social/skills/curate-brand-pattern/SKILL.md",
+      "sourcePath": "plugins/insideout-social/skills/curate-brand-pattern"
+    },
+    {
+      "componentId": "skill:insideout-social:generate-copy",
+      "harness": "codex",
+      "status": "shared",
+      "path": "plugins/insideout-social/skills/generate-copy/SKILL.md",
+      "sourcePath": "plugins/insideout-social/skills/generate-copy"
+    },
+    {
+      "componentId": "skill:insideout-social:generate-image",
+      "harness": "codex",
+      "status": "shared",
+      "path": "plugins/insideout-social/skills/generate-image/SKILL.md",
+      "sourcePath": "plugins/insideout-social/skills/generate-image"
+    },
+    {
+      "componentId": "skill:insideout-social:generate-video",
+      "harness": "codex",
+      "status": "shared",
+      "path": "plugins/insideout-social/skills/generate-video/SKILL.md",
+      "sourcePath": "plugins/insideout-social/skills/generate-video"
+    },
+    {
+      "componentId": "skill:insideout-social:review-grid-feedback",
+      "harness": "codex",
+      "status": "shared",
+      "path": "plugins/insideout-social/skills/review-grid-feedback/SKILL.md",
+      "sourcePath": "plugins/insideout-social/skills/review-grid-feedback"
+    },
+    {
+      "componentId": "skill:insideout-mar-aberto:run-mar-aberto",
+      "harness": "codex",
+      "status": "shared",
+      "path": "plugins/insideout-mar-aberto/skills/run-mar-aberto/SKILL.md",
+      "sourcePath": "plugins/insideout-mar-aberto/skills/run-mar-aberto"
+    },
+    {
+      "componentId": "skill:insideout-mar-aberto:export-stilingue",
+      "harness": "codex",
+      "status": "shared",
+      "path": "plugins/insideout-mar-aberto/skills/export-stilingue/SKILL.md",
+      "sourcePath": "plugins/insideout-mar-aberto/skills/export-stilingue"
+    },
+    {
+      "componentId": "skill:insideout-mar-aberto:collect-comments",
+      "harness": "codex",
+      "status": "shared",
+      "path": "plugins/insideout-mar-aberto/skills/collect-comments/SKILL.md",
+      "sourcePath": "plugins/insideout-mar-aberto/skills/collect-comments"
+    },
+    {
+      "componentId": "skill:insideout-mar-aberto:analyze-sentiment",
+      "harness": "codex",
+      "status": "shared",
+      "path": "plugins/insideout-mar-aberto/skills/analyze-sentiment/SKILL.md",
+      "sourcePath": "plugins/insideout-mar-aberto/skills/analyze-sentiment"
+    },
+    {
+      "componentId": "skill:insideout-mar-aberto:generate-report",
+      "harness": "codex",
+      "status": "shared",
+      "path": "plugins/insideout-mar-aberto/skills/generate-report/SKILL.md",
+      "sourcePath": "plugins/insideout-mar-aberto/skills/generate-report"
+    },
+    {
+      "componentId": "skill:insideout-governance:registrar-friccao",
+      "harness": "codex",
+      "status": "shared",
+      "path": "plugins/insideout-governance/skills/registrar-friccao/SKILL.md",
+      "sourcePath": "plugins/insideout-governance/skills/registrar-friccao"
+    },
+    {
+      "componentId": "skill:insideout-governance:governanca",
+      "harness": "codex",
+      "status": "shared",
+      "path": "plugins/insideout-governance/skills/governanca/SKILL.md",
+      "sourcePath": "plugins/insideout-governance/skills/governanca"
+    },
+    {
+      "componentId": "skill:insideout-mailing:gerir-contatos",
+      "harness": "codex",
+      "status": "shared",
+      "path": "plugins/insideout-mailing/skills/gerir-contatos/SKILL.md",
+      "sourcePath": "plugins/insideout-mailing/skills/gerir-contatos"
+    },
+    {
+      "componentId": "skill:insideout-mailing:montar-listas",
+      "harness": "codex",
+      "status": "shared",
+      "path": "plugins/insideout-mailing/skills/montar-listas/SKILL.md",
+      "sourcePath": "plugins/insideout-mailing/skills/montar-listas"
+    },
+    {
+      "componentId": "skill:insideout-mailing:gerir-historico",
+      "harness": "codex",
+      "status": "shared",
+      "path": "plugins/insideout-mailing/skills/gerir-historico/SKILL.md",
+      "sourcePath": "plugins/insideout-mailing/skills/gerir-historico"
+    }
+  ],
+  "gaps": [],
+  "marketplaces": [
+    {
+      "harness": "codex",
+      "manifestPath": ".agents/plugins/marketplace.json",
+      "plugins": [
+        {
+          "name": "insideout-hyundai-social",
+          "sourceType": "local",
+          "path": "plugins/insideout-hyundai-social",
+          "managed": true
+        },
+        {
+          "name": "insideout-social",
+          "sourceType": "local",
+          "path": "plugins/insideout-social",
+          "managed": true
+        },
+        {
+          "name": "insideout-mar-aberto",
+          "sourceType": "local",
+          "path": "plugins/insideout-mar-aberto",
+          "managed": true
+        },
+        {
+          "name": "insideout-governance",
+          "sourceType": "local",
+          "path": "plugins/insideout-governance",
+          "managed": true
+        },
+        {
+          "name": "insideout-mailing",
+          "sourceType": "local",
+          "path": "plugins/insideout-mailing",
+          "managed": true
+        }
+      ]
+    }
+  ]
+}

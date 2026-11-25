@@ -1,0 +1,4 @@
+interface:
+  display_name: "Validar exportação Stilingue"
+  short_description: "Valide a entrada oficial da análise"
+  default_prompt: "Use $export-stilingue para validar a exportação oficial desta análise."

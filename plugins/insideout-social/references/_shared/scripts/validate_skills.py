@@ -1,0 +1,187 @@
+#!/usr/bin/env python3
+"""Validação estrutural determinística do plugin Codex InsideOut Social."""
+from __future__ import annotations
+
+import json
+import re
+from pathlib import Path
+
+
+SHARED_ROOT = Path(__file__).parent.parent
+ROOT = SHARED_ROOT.parent.parent / "skills"
+PLUGIN_MANIFEST = ROOT.parent / ".codex-plugin" / "plugin.json"
+SKILLS = {
+    "analyze-briefing": ROOT / "analyze-briefing",
+    "curate-brand-pattern": ROOT / "curate-brand-pattern",
+    "generate-copy": ROOT / "generate-copy",
+    "generate-grid": ROOT / "generate-grid",
+    "generate-image": ROOT / "generate-image",
+    "generate-video": ROOT / "generate-video",
+    "review-grid-feedback": ROOT / "review-grid-feedback",
+}
+REQUIRED_SHARED = (
+    SHARED_ROOT / "voz-usuario.md",
+    SHARED_ROOT / "about-insideout.md",
+    SHARED_ROOT / "airtable-contract.md",
+    SHARED_ROOT / "client-feedback-package.md",
+    SHARED_ROOT / "evals" / "resposta-sem-ids.md",
+)
+REQUIRED_FEATURE_FILES = (
+    ROOT / "curate-brand-pattern" / "references" / "pattern-contract.md",
+    ROOT / "generate-grid" / "references" / "design-briefing.md",
+    ROOT / "generate-grid" / "references" / "trend-context.md",
+    ROOT / "generate-grid" / "references" / "html-snapshot.md",
+    ROOT / "generate-grid" / "references" / "client-presentation.md",
+    ROOT / "generate-grid" / "references" / "site-access.md",
+)
+FEEDBACK_ACCEPTANCE = {
+    SHARED_ROOT / "client-feedback-package.md": (
+        "insideout-grid-feedback",
+        '"schemaVersion": "1.0"',
+        "postFingerprint",
+        "JSON UTF-8 canônico",
+        "localStorage",
+        "fetch",
+        "CSV não é a",
+    ),
+    ROOT / "generate-grid" / "SKILL.md": (
+        "revisão para cliente com feedback",
+        "review-grid-feedback",
+        "não cria backend",
+    ),
+    ROOT / "generate-grid" / "references" / "html-snapshot.md": (
+        "Adicionar feedback",
+        "Exportar feedback",
+        "Exportar CSV",
+        "mockup aprovado",
+        "planejamento para cliente",
+        "overlay modal nativo",
+        "formulário remoto",
+    ),
+    ROOT / "generate-grid" / "references" / "site-access.md": (
+        "comentários somente no\n  navegador",
+    ),
+    ROOT / "generate-grid" / "evals" / "resumo-cliente-com-mockups.md": (
+        "não oferece upload, edição ou comentários",
+    ),
+    ROOT / "review-grid-feedback" / "SKILL.md": (
+        "Não importar CSV",
+        "Deduplicate por `commentId`",
+        "HTML/manifesto",
+        "generate-grid",
+        "generate-copy",
+        "generate-image",
+        "esta skill não\nescreve `Posts`",
+    ),
+}
+FORBIDDEN = (
+    "${CLAUDE_PLUGIN_ROOT}",
+    "grid_library",
+    "product_library",
+    "insideout-painel.html",
+    "GEMINI_API_KEY",
+)
+HARDCODED_AIRTABLE_ID = re.compile(r"\b(?:app|tbl|fld)[A-Za-z0-9]{14,}\b")
+
+
+def frontmatter(text: str) -> dict[str, str]:
+    match = re.match(r"^---\n(.*?)\n---\n", text, re.DOTALL)
+    if not match:
+        return {}
+    out: dict[str, str] = {}
+    for line in match.group(1).splitlines():
+        if ":" in line:
+            key, value = line.split(":", 1)
+            out[key.strip()] = value.strip().strip("'\"")
+    return out
+
+
+def main() -> int:
+    errors: list[str] = []
+    warnings: list[str] = []
+
+    for path in REQUIRED_SHARED:
+        if not path.is_file():
+            errors.append(f"arquivo compartilhado ausente: {path.relative_to(ROOT)}")
+
+    for path in REQUIRED_FEATURE_FILES:
+        if not path.is_file():
+            errors.append(f"arquivo de capacidade ausente: {path.relative_to(ROOT)}")
+
+    for path, expected_terms in FEEDBACK_ACCEPTANCE.items():
+        if not path.is_file():
+            errors.append(f"arquivo de aceite ausente: {path.relative_to(ROOT)}")
+            continue
+        content = path.read_text(encoding="utf-8")
+        for expected in expected_terms:
+            if expected not in content:
+                errors.append(
+                    f"{path.relative_to(ROOT)}: critério de feedback ausente: {expected}"
+                )
+
+    for name, skill_dir in SKILLS.items():
+        skill_file = skill_dir / "SKILL.md"
+        if not skill_file.is_file():
+            errors.append(f"{name}: SKILL.md ausente")
+            continue
+        text = skill_file.read_text(encoding="utf-8")
+        meta = frontmatter(text)
+        if meta.get("name") != name:
+            errors.append(f"{name}: frontmatter name divergente")
+        if not meta.get("description"):
+            errors.append(f"{name}: description ausente")
+        lines = text.count("\n") + 1
+        if lines >= 500:
+            errors.append(f"{name}: SKILL.md tem {lines} linhas (limite <500)")
+        for token in FORBIDDEN:
+            if token in text:
+                errors.append(f"{name}: dependência legada encontrada: {token}")
+        if HARDCODED_AIRTABLE_ID.search(text):
+            errors.append(f"{name}: ID do Airtable hardcoded no SKILL.md")
+
+        eval_dir = skill_dir / "evals"
+        evals = sorted(eval_dir.glob("*.md")) if eval_dir.is_dir() else []
+        if len(evals) < 3:
+            errors.append(f"{name}: menos de 3 evals versionados")
+        for eval_file in evals:
+            eval_text = eval_file.read_text(encoding="utf-8")
+            for heading in ("## Prompt", "## Resultado esperado"):
+                if heading not in eval_text:
+                    errors.append(
+                        f"{eval_file.relative_to(ROOT)}: seção {heading!r} ausente"
+                    )
+
+    if not PLUGIN_MANIFEST.is_file():
+        errors.append("manifesto Codex ausente: .codex-plugin/plugin.json")
+    else:
+        try:
+            manifest = json.loads(PLUGIN_MANIFEST.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            errors.append(f"manifesto Codex inválido: {exc.msg}")
+        else:
+            if manifest.get("name") != "insideout-social":
+                errors.append("manifesto Codex: name deve ser insideout-social")
+            if not manifest.get("version"):
+                errors.append("manifesto Codex: version ausente")
+            if manifest.get("skills") != "./skills/":
+                errors.append("manifesto Codex: skills deve apontar para ./skills/")
+            default_prompts = manifest.get("interface", {}).get("defaultPrompt", [])
+            if not isinstance(default_prompts, list):
+                errors.append("manifesto Codex: interface.defaultPrompt deve ser uma lista")
+            elif len(default_prompts) > 3:
+                errors.append(
+                    "manifesto Codex: interface.defaultPrompt aceita no máximo 3 itens"
+                )
+
+    result = {
+        "ok": not errors,
+        "errors": errors,
+        "warnings": warnings,
+        "skills": sorted(SKILLS),
+    }
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+    return 1 if errors else 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
