@@ -57,7 +57,7 @@
     },
     {
       "name": "insideout-mailing",
-      "description": "Contatos, listas e histórico de ações no Google Sheets.",
+      "description": "Contatos, listas externas versionadas e histórico de ações no Google Sheets.",
       "source": {
         "source": "local",
         "path": "./plugins/insideout-mailing"

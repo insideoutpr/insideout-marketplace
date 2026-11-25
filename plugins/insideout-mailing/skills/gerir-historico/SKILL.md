@@ -14,7 +14,8 @@ Leia `../../references/_shared/contrato.md`,
 1. Descubra a planilha e resolva uma ação existente, ou apresente os campos
    explícitos de uma nova ação. Nome e data iguais não bastam para reutilização.
 2. Para importar, confirme origem e significado dos dados: seleção, convite,
-   confirmação, presença, envio ou entrega.
+   confirmação, presença, envio ou entrega. Uma lista externa aprovada prova
+   apenas a seleção, salvo fato adicional declarado pela fonte.
 3. Cruze com Contatos e Vínculos. Separe confirmados, ambíguos e não encontrados.
    Não crie nem atualize cadastros nesta etapa.
 4. Consulte a participação Contato + Ação antes de criar. Apresente fatos novos,
@@ -31,3 +32,7 @@ Não enviar mensagens, atualizar o Asana ou agendar rotinas. Não tratar
 participação como um único funil que deduz presença ou entrega.
 Não salvar dados inventados para preencher histórico vazio. Não duplicar uma
 participação porque a pessoa está em várias listas da mesma ação.
+
+Não administrar estoque, confirmar envios operacionais nem monitorar
+publicações. Esses retornos podem ser cruzados quando já registrados por seus
+times responsáveis e a fonte, o significado e a data forem informados.

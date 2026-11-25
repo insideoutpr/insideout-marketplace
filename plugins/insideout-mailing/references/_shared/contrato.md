@@ -7,7 +7,9 @@ permanece oficial durante o piloto; não há sincronização entre as duas bases
 ## Descoberta e escrita
 
 Confirme o link, título, tipo nativo, sete abas, cabeçalhos, formatos e seleções
-atuais antes de operar. Compare com `workbook-schema.json` nesta pasta.
+atuais antes de operar. Compare com `workbook-schema.json` nesta pasta. O link
+indicado em cada pedido é a fonte; uma planilha aberta antes, uma cópia de teste
+ou uma planilha-mãe não se tornam fonte ou destino por padrão.
 Configuração identifica o contrato, a implantação, a origem e as opções.
 Se o destino não for inequívoco ou divergir do contrato, pare a escrita e
 explique a diferença. Não crie outra planilha para contornar uma falha.
@@ -40,6 +42,10 @@ e seleções. Escrita com resultado incerto requer leitura antes de repetir.
 Testes usam nomes `[TESTE CODEX]` e lotes de no máximo dez. Limpeza de testes
 é uma ação separada; não apagar automaticamente.
 
+Quando uma escrita exigir ordenar uma aba editável, ordene a linha completa por
+`Nome` e releia IDs e relações depois. Snapshots fechados e listas externas só
+são ordenados quando essa operação estiver expressamente autorizada.
+
 ## Campos e propriedade
 
 Cabeçalhos, opções iniciais e chaves estão em `workbook-schema.json`.
@@ -60,6 +66,21 @@ desconhecidos nem criar contatos por semelhança durante um cruzamento.
 Nomes e datas iguais podem corresponder a ações distintas: apresente candidatas
 e resolva pelo contexto/fonte, sem escolher a primeira.
 
+## Listas por demanda
+
+Listas de evento e seeding vivem em arquivos Google Sheets externos, vinculados
+à demanda; o mailing central preserva cadastro e histórico. `Listas` e `Itens
+de lista` existem apenas para consulta do legado 1.0 e não recebem novas
+versões. O arquivo externo precisa ser indicado ou autorizado antes de ser
+criado, alterado ou compartilhado.
+
+Há dois recortes permitidos: a versão para cliente contém nome, redes e defesa
+baseada no cadastro; a versão operacional contém somente os dados logísticos
+necessários depois da aprovação explícita. A aprovação de nomes não confirma
+endereço, envio, entrega nem publicação. Transferir uma versão aprovada para
+uma planilha-mãe requer destino e intervalo explícitos, releitura antes/depois
+e preservação da origem.
+
 ## Revisão e dados pessoais
 
 Pendências ficam nos próprios registros, nunca em uma oitava aba.
@@ -78,6 +99,9 @@ com terceiros automaticamente. Ocultar coluna não restringe acesso.
 ## Fora da versão
 
 Não enviar mensagens, disparar campanhas, criar tarefas no Asana, agendar
-lembretes, enriquecer dados externamente ou consumir créditos.
+lembretes, enriquecer dados externamente ou consumir créditos. Gestão de
+estoque, reservas, baixas e monitoramento de publicações pertencem aos fluxos
+dos times de Produção e Influenciadores; este plugin não os exige como
+pré-requisito nem os executa.
 Fricções do plugin podem ser preparadas para a governança existente; se o acervo
 não reconhecer a área Mailing, entregue relato não registrado, sem mudar suas listas.

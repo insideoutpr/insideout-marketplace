@@ -174,7 +174,8 @@
       "type": "skill",
       "name": "montar-listas",
       "plugin": "insideout-mailing",
-      "canonicalPath": "plugins/insideout-mailing/skills/montar-listas/SKILL.md"
+      "canonicalPath": "plugins/insideout-mailing/skills/montar-listas/SKILL.md",
+      "description": "Monta listas externas versionadas de mailing e seeding, com recortes para cliente e produção."
     },
     {
       "id": "skill:insideout-mailing:gerir-historico",

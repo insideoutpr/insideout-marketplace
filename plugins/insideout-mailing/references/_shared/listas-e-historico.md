@@ -2,6 +2,11 @@
 
 ## Listas
 
+Cada evento ou seeding usa um arquivo Google Sheets externo, indicado ou
+autorizado para aquela demanda. O mailing é a fonte de cadastro e histórico;
+as abas centrais `Listas` e `Itens de lista` são somente legado de consulta e
+não recebem listas novas.
+
 Uma lista tem ID, versão inteira crescente, nome, finalidade e critérios.
 Pode estar ligada a uma ação existente. Itens referenciam a versão exata.
 Antes de montar, resolva tipo de contato, região, vínculo, finalidade e campos
@@ -18,6 +23,13 @@ Preencher destinatário, endereço e CEP da versão fechada com os valores
 selecionados. Depois do fechamento, preservar a versão e criar outra para
 qualquer alteração de conteúdo ou seleção. Repetir critérios e seleção idênticos
 reutiliza a versão em vez de gerar duplicata.
+
+A versão para cliente contém somente nome, redes disponíveis e defesa baseada
+no cadastro. A versão para produção só pode incluir nome e endereço completo
+necessário após a aprovação explícita; endereço cadastrado é distinto de
+endereço confirmado. Transferência para planilha-mãe requer intervalo e
+autorização explícitos. Mantenha rascunhos editáveis em ordem alfabética por
+nome; versões fechadas preservam a ordem do snapshot.
 
 ## Participações
 

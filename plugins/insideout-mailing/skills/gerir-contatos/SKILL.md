@@ -12,14 +12,17 @@ Consulte o contrato JSON quando descobrir ou validar a planilha.
 ## Resolver e revisar
 
 1. Confirme a planilha e descubra a estrutura vigente.
-2. Localize o contato e seus vínculos por evidência, sem escolher homônimos.
-3. Para criar, pesquise duplicatas em todas as categorias. Um novo vínculo não
+2. Confirme também a fonte indicada no pedido. Nunca suponha que uma planilha
+   anteriormente usada, uma cópia de teste ou uma aba de cliente seja o
+   "nosso mailing".
+3. Localize o contato e seus vínculos por evidência, sem escolher homônimos.
+4. Para criar, pesquise duplicatas em todas as categorias. Um novo vínculo não
    implica uma nova pessoa.
-4. Apresente fatos, lacunas, conflitos e correções propostas. Uma auditoria pode
+5. Apresente fatos, lacunas, conflitos e correções propostas. Uma auditoria pode
    terminar em diagnóstico, sem escrita.
-5. Aplique somente o cadastro ou a revisão autorizada. Preserve atributos,
+6. Aplique somente o cadastro ou a revisão autorizada. Preserve atributos,
    vínculos anteriores e datas não abrangidos pelo pedido.
-6. Releia contato e vínculos e informe resultado e pendências.
+7. Releia contato e vínculos e informe resultado e pendências.
 
 ## Escrita própria
 
@@ -35,3 +38,11 @@ a união sem gravar alterações parciais.
 Não migrar a base nem criar sua estrutura como rotina. Não alterar listas,
 ações ou fatos históricos por conta de uma correção de cadastro. Não apagar
 cadastro, inferir atributo pessoal ou completar dados ausentes por plausibilidade.
+
+## Ordem
+
+Quando uma alteração acrescentar ou mover linhas em uma aba, mantenha a aba em
+ordem alfabética por `Nome`, ordenando a linha completa e não somente a coluna
+visível. Releia as identidades estáveis depois da ordenação. Não reordene
+snapshots fechados nem uma planilha externa que não tenha sido autorizada para
+escrita.

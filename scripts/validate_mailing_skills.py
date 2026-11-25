@@ -31,7 +31,7 @@ def validate():
  for path in P.rglob("*"):
   if path.is_file() and path.suffix not in {".md",".json",".yaml"}:errors.append("Executable/operational asset inside package")
  manifest=json.loads((P/".codex-plugin/plugin.json").read_text(encoding="utf-8"))
- if manifest["name"]!=P.name or manifest["version"]!="0.1.0" or manifest["skills"]!="./skills/":errors.append("Invalid manifest")
+ if manifest["name"]!=P.name or manifest["version"]!="0.2.0" or manifest["skills"]!="./skills/":errors.append("Invalid manifest")
  catalog=json.loads((ROOT/".agents/plugins/marketplace.json").read_text(encoding="utf-8"))
  entries=[p for p in catalog["plugins"] if p["name"]==P.name]
  if len(entries)!=1 or entries[0]["source"]["path"]!="./plugins/"+P.name:errors.append("Invalid marketplace entry")

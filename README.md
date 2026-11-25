@@ -180,12 +180,17 @@ históricos da versão 0.2.2 estão em
 
 ## InsideOut Mailing
 
-Piloto 0.1.0 disponível no catálogo da `main`, junto ao Hyundai Social.
+Versão 0.2.0 disponível no catálogo da `main`, junto ao Hyundai Social.
 
 Três skills: gerir-contatos (cadastros e qualidade), montar-listas (seleções
-versionadas) e gerir-historico (ações, cruzamentos e participações).
+versionadas em arquivos externos por demanda) e gerir-historico (ações,
+cruzamentos e participações).
 O estado vive em uma planilha Google Sheets nativa, com Contatos, Vínculos,
-Ações, Listas, Itens de lista, Participações e Configuração. A implantação
+Ações, Listas, Itens de lista, Participações e Configuração. As abas de lista
+são legado de consulta: as novas listas de evento e seeding vivem em arquivos
+externos autorizados, com um recorte para cliente e outro operacional após
+aprovação. Estoque, baixas e monitoramento de publicações permanecem nos fluxos
+dos times responsáveis. A implantação
 inicial não é uma skill; arquivos reais e relatório restrito ficam fora
 do repositório. O Excel anterior permanece oficial durante o teste.
 
