@@ -40,23 +40,22 @@ codex plugin marketplace list --json
 Se ainda não houver `insideout`, cadastre-o:
 
 ```powershell
-codex plugin marketplace add supernova-labs/insideout-cowork --ref main
+codex plugin marketplace add insideoutpr/insideout-marketplace --ref main
 ```
 
-Se `insideout` já aponta para `main`, atualize o catálogo:
+Se `insideout` já aponta para `insideoutpr/insideout-marketplace` na `main`, atualize o catálogo:
 
 ```powershell
 codex plugin marketplace upgrade insideout
 ```
 
-Se ele foi cadastrado com `codex/hyundai-social-pilot` ou
-`codex/mailing-google-sheets-pilot`, troque explicitamente a origem. O erro
+Se `insideout` aponta para outro repositório ou para outra branch, troque explicitamente a origem. O erro
 `already added from a different source` também indica que adicionar por cima
 não fez a troca. Anote a origem atual e execute, um comando por vez:
 
 ```powershell
 codex plugin marketplace remove insideout
-codex plugin marketplace add supernova-labs/insideout-cowork --ref main
+codex plugin marketplace add insideoutpr/insideout-marketplace --ref main
 ```
 
 Esses comandos gerenciam a origem do catálogo. Não use `codex plugin remove`

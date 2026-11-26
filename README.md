@@ -9,7 +9,7 @@ No PowerShell do próprio computador, fora do chat, cadastre o catálogo da `mai
 e instale somente os produtos necessários:
 
 ```powershell
-codex plugin marketplace add supernova-labs/insideout-cowork --ref main
+codex plugin marketplace add insideoutpr/insideout-marketplace --ref main
 codex plugin add insideout-social@insideout
 codex plugin add insideout-mar-aberto@insideout
 codex plugin add insideout-governance@insideout

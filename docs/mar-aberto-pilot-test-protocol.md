@@ -35,7 +35,7 @@ teste não executado precisa registrar o motivo; ele nunca conta como sucesso.
 2. Em uma tarefa nova do Codex, instale a referência informada:
 
    ```powershell
-   codex plugin marketplace add supernova-labs/insideout-cowork --ref <ref-publicada>
+   codex plugin marketplace add insideoutpr/insideout-marketplace --ref <ref-publicada>
    codex plugin add insideout-mar-aberto@insideout
    ```
 

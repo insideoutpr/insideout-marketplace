@@ -10,7 +10,7 @@ se o catálogo já apontar para uma antiga branch de piloto. No PowerShell do
 próprio computador, fora do chat:
 
 ```powershell
-codex plugin marketplace add supernova-labs/insideout-cowork --ref main
+codex plugin marketplace add insideoutpr/insideout-marketplace --ref main
 codex plugin add insideout-mailing@insideout
 ```
 
